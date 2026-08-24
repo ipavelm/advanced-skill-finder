@@ -1,0 +1,11 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Skill discovery",
+      "description": "Finds skills in the open ecosystem and asks whether to install them permanently or load them once. Read a skill before installing it — skills run with the agent's full permissions.",
+      "skills": ["advanced-skill-finder"]
+    }
+  ]
+}
