@@ -1,9 +1,9 @@
 ---
-name: advanced-find-skills
+name: advanced-skill-finder
 description: Discover agent skills from the open ecosystem and load them either permanently or for a single session. Use when the user asks "how do I do X" where X is a specialized capability, says "find a skill for X", "is there a skill that can...", names a skill or repository to try, or wants to extend agent capabilities. Always offers a choice between installing and one-off loading before touching anything.
 ---
 
-# Advanced find skills
+# Advanced skill finder
 
 Finds skills in the open agent-skills ecosystem and loads them one of two ways.
 Derived from `vercel-labs/skills@find-skills` (MIT, Vercel Inc.), extended with

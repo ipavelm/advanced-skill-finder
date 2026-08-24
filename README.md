@@ -1,11 +1,11 @@
 # advanced-find-skills
 
-One agent skill: **`advanced-find-skills`** — finds skills in the open agent-skills
+One agent skill: **`advanced-skill-finder`** — finds skills in the open agent-skills
 ecosystem and loads them.
 
 ## What it does differently
 
-`vercel-labs/skills@find-skills` searches and installs. `advanced-find-skills` adds the
+`vercel-labs/skills@find-skills` searches and installs. `advanced-skill-finder` adds the
 step in between: it presents the finding and asks whether to **install** the
 skill permanently (`skills add`, stays on disk, pinned in `skills-lock.json`)
 or **load it once** for the current task (`skills use`, prints the instructions,
@@ -16,7 +16,7 @@ reputation matters in both modes.
 ## Install
 
 ```bash
-npx skills add ipavelm/advanced-find-skills@advanced-find-skills -g -y
+npx skills add ipavelm/advanced-find-skills@advanced-skill-finder -g -y
 ```
 
 Drop `-g` to install into the current project instead of globally.
