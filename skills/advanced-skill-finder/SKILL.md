@@ -1,6 +1,6 @@
 ---
 name: advanced-skill-finder
-description: Discover agent skills from the open ecosystem and load them either permanently or for a single session. Use when the user says "find a skill for X", asks "is there a skill that can...", names a skill or repository to try, or wants to extend agent capabilities. Also use before starting specialized or complex work — framework-specific implementation, deployment, testing strategy, document or data tooling — when no already-installed skill covers it: check the available-skills list first, and search the ecosystem only if nothing there fits. Always offers a choice between installing and one-off loading before touching anything.
+description: Discover agent skills from the open ecosystem and load them either permanently or for a single session. Use when the user says "find a skill for X", asks "is there a skill that can...", names a skill or repository to try, or wants to extend agent capabilities. Also use before starting specialized or complex work — framework-specific implementation, deployment, testing strategy, document or data tooling — when no already-installed skill covers it. Check the available-skills list first, and search the ecosystem only if nothing there fits. Always offers a choice between installing and one-off loading before touching anything.
 ---
 
 # Advanced skill finder
