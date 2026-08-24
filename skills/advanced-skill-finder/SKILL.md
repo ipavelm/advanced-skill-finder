@@ -1,6 +1,6 @@
 ---
 name: advanced-skill-finder
-description: Discover agent skills from the open ecosystem and load them either permanently or for a single session. Use when the user asks "how do I do X" where X is a specialized capability, says "find a skill for X", "is there a skill that can...", names a skill or repository to try, or wants to extend agent capabilities. Always offers a choice between installing and one-off loading before touching anything.
+description: Discover agent skills from the open ecosystem and load them either permanently or for a single session. Use when the user says "find a skill for X", asks "is there a skill that can...", names a skill or repository to try, or wants to extend agent capabilities. Also use before starting specialized or complex work — framework-specific implementation, deployment, testing strategy, document or data tooling — when no already-installed skill covers it: check the available-skills list first, and search the ecosystem only if nothing there fits. Always offers a choice between installing and one-off loading before touching anything.
 ---
 
 # Advanced skill finder
@@ -20,10 +20,15 @@ an install-versus-load-once decision step.
 
 ## Procedure
 
-### 1. Identify the need
+### 1. Identify the need, then check what is already installed
 
 Domain (React, testing, deployment, design), specific task, and whether it is
 common enough that a skill plausibly exists.
+
+Read the list of installed skills before searching. If one of them covers the
+need, say so and use it — searching the ecosystem for a capability already on
+disk wastes a round trip and risks installing a worse duplicate. Search only
+when nothing installed fits.
 
 ### 2. Check the leaderboard, then search
 
@@ -92,7 +97,8 @@ npx skills add <owner/repo@skill> -g -y
 ```
 
 Drop `-g` for project scope, which commits the skill with the repo and shares
-it with the team. Confirm the entry landed in `skills-lock.json`.
+it with the team. Confirm the entry landed in the lockfile — `skills-lock.json`
+in the project for project scope, `~/.agents/.skill-lock.json` for global.
 
 **Load once:**
 
