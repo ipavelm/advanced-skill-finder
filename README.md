@@ -1,4 +1,4 @@
-# advanced-find-skills
+# advanced-skill-finder
 
 One agent skill: **`advanced-skill-finder`** — finds skills in the open agent-skills
 ecosystem and loads them.
@@ -16,7 +16,7 @@ reputation matters in both modes.
 ## Install
 
 ```bash
-npx skills add ipavelm/advanced-find-skills@advanced-skill-finder -g -y
+npx skills add ipavelm/advanced-skill-finder@advanced-skill-finder -g -y
 ```
 
 Drop `-g` to install into the current project instead of globally.
