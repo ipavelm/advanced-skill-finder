@@ -1,0 +1,107 @@
+{
+  "summary": {
+    "total": 12,
+    "passed": 7,
+    "failed": 5
+  },
+  "results": [
+    {
+      "query": "find me a skill for working with Terraform",
+      "should_trigger": true,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": false
+    },
+    {
+      "query": "is there a skill that can review SQL migrations?",
+      "should_trigger": true,
+      "triggers": 2,
+      "runs": 3,
+      "trigger_rate": 0.6666666666666666,
+      "pass": true
+    },
+    {
+      "query": "take a look at supabase/agent-skills and tell me what is in there",
+      "should_trigger": true,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": false
+    },
+    {
+      "query": "what are you missing to help me better with frontend work? get yourself some tooling",
+      "should_trigger": true,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": false
+    },
+    {
+      "query": "I need to set up canary deployments on Kubernetes with automatic rollback",
+      "should_trigger": true,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": false
+    },
+    {
+      "query": "put together a testing strategy for a legacy Django monolith",
+      "should_trigger": true,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": false
+    },
+    {
+      "query": "this test is failing on the assert, fix it",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": true
+    },
+    {
+      "query": "rename the variable userId to accountId across all files",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": true
+    },
+    {
+      "query": "what does the UserPromptSubmit hook do in Claude Code?",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": true
+    },
+    {
+      "query": "create a brand new skill from scratch for reviewing pull requests",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": true
+    },
+    {
+      "query": "explain how git rebase differs from git merge",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": true
+    },
+    {
+      "query": "what is 17 * 23",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": true
+    }
+  ],
+  "skill_name": "advanced-skill-finder",
+  "description": "Discover agent skills from the open ecosystem and load them either permanently or for a single session. Use when the user says \"find a skill for X\", asks \"is there a skill that can...\", names a skill or repository to try, or wants to extend agent capabilities. Also use before starting specialized or complex work — framework-specific implementation, deployment, testing strategy, document or data tooling — when no already-installed skill covers it. Check the available-skills list first, and search the ecosystem only if nothing there fits. Always offers a choice between installing and one-off loading before touching anything."
+}

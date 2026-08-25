@@ -1,0 +1,107 @@
+{
+  "skill_name": "advanced-skill-finder",
+  "description": "Use to discover, vet, and load agent skills from the open ecosystem \u2014 either installed permanently or loaded for a single session.\n\nTrigger when the user: asks for a skill or extra tooling for any topic (\"find me a skill for Terraform\", \"is there a skill that\u2026\"); names a skill, owner, or repository to inspect or try; or asks you to extend, upgrade, or fill gaps in your own capabilities before helping them.\n\nAlso trigger before substantial specialist work where an expert playbook would help \u2014 infrastructure and deployment (Kubernetes, CI/CD, IaC), framework-specific implementation, migrations, testing strategy, data or document tooling \u2014 when no installed skill covers that domain. Check the available-skills list first; search the ecosystem only if nothing there fits.\n\nSkip for quick edits, debugging, or questions you can answer directly. Always offer a choice between installing and one-off loading before running anything.",
+  "summary": {
+    "total": 12,
+    "passed": 6,
+    "failed": 6
+  },
+  "results": [
+    {
+      "query": "find me a skill for working with Terraform",
+      "should_trigger": true,
+      "triggers": 1,
+      "runs": 3,
+      "trigger_rate": 0.3333333333333333,
+      "pass": false
+    },
+    {
+      "query": "is there a skill that can review SQL migrations?",
+      "should_trigger": true,
+      "triggers": 1,
+      "runs": 3,
+      "trigger_rate": 0.3333333333333333,
+      "pass": false
+    },
+    {
+      "query": "take a look at supabase/agent-skills and tell me what is in there",
+      "should_trigger": true,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": false
+    },
+    {
+      "query": "what are you missing to help me better with frontend work? get yourself some tooling",
+      "should_trigger": true,
+      "triggers": 1,
+      "runs": 3,
+      "trigger_rate": 0.3333333333333333,
+      "pass": false
+    },
+    {
+      "query": "I need to set up canary deployments on Kubernetes with automatic rollback",
+      "should_trigger": true,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": false
+    },
+    {
+      "query": "put together a testing strategy for a legacy Django monolith",
+      "should_trigger": true,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": false
+    },
+    {
+      "query": "this test is failing on the assert, fix it",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": true
+    },
+    {
+      "query": "rename the variable userId to accountId across all files",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": true
+    },
+    {
+      "query": "what does the UserPromptSubmit hook do in Claude Code?",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": true
+    },
+    {
+      "query": "create a brand new skill from scratch for reviewing pull requests",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": true
+    },
+    {
+      "query": "explain how git rebase differs from git merge",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": true
+    },
+    {
+      "query": "what is 17 * 23",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "trigger_rate": 0.0,
+      "pass": true
+    }
+  ]
+}

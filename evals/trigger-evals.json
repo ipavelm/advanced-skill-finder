@@ -1,0 +1,14 @@
+[
+  {"query": "find me a skill for working with Terraform", "should_trigger": true},
+  {"query": "is there a skill that can review SQL migrations?", "should_trigger": true},
+  {"query": "take a look at supabase/agent-skills and tell me what is in there", "should_trigger": true},
+  {"query": "what are you missing to help me better with frontend work? get yourself some tooling", "should_trigger": true},
+  {"query": "I need to set up canary deployments on Kubernetes with automatic rollback", "should_trigger": true},
+  {"query": "put together a testing strategy for a legacy Django monolith", "should_trigger": true},
+  {"query": "this test is failing on the assert, fix it", "should_trigger": false},
+  {"query": "rename the variable userId to accountId across all files", "should_trigger": false},
+  {"query": "what does the UserPromptSubmit hook do in Claude Code?", "should_trigger": false},
+  {"query": "create a brand new skill from scratch for reviewing pull requests", "should_trigger": false},
+  {"query": "explain how git rebase differs from git merge", "should_trigger": false},
+  {"query": "what is 17 * 23", "should_trigger": false}
+]
