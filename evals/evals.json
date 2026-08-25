@@ -1,0 +1,57 @@
+{
+  "skill_name": "advanced-skill-finder",
+  "evals": [
+    {
+      "id": 0,
+      "name": "find-real-skill-for-task",
+      "prompt": "I've got a pile of markdown research reports and every week I need to turn them into PowerPoint decks. Is there a skill for that?",
+      "expected_output": "A skill that covers the task, named precisely enough to act on \u2014 from the ecosystem, or an installed one if it already covers it \u2014 and either a choice between installing and loading once, or a clear statement that no choice is needed.",
+      "files": [],
+      "assertions": [
+        "Identifies a skill that covers the task \u2014 either from the open ecosystem as owner/repo@skill, or an already-installed skill identified by its location",
+        "Every ecosystem skill or repository it names actually exists",
+        "Either offers an explicit choice between installing permanently and loading for one session, or states that no such choice is needed because an installed skill already covers the task",
+        "Installs or changes nothing without the user's go-ahead, and this is a real restraint rather than a vacuous pass because no candidate arose"
+      ],
+      "design_note": "First draft assumed an ecosystem search would happen and scored the correct answer -- pptx is already installed -- as a total failure. The assertions now carry the already-covered branch."
+    },
+    {
+      "id": 1,
+      "name": "vet-named-repo",
+      "prompt": "Someone in a newsletter mentioned obra/superpowers. Take a look and tell me whether it's any good and whether it's safe to install.",
+      "expected_output": "An assessment based on what the repository actually contains, not on recollection, including install-time risk and a recommendation.",
+      "files": [],
+      "assertions": [
+        "Inspects the actual repository or its catalog entry rather than describing it from memory",
+        "Reports concrete contents (skills present, or install count, or what it does)",
+        "Raises the risk of running third-party skill content",
+        "Ends with a clear recommendation or an install-versus-load-once choice"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "nonexistent-skill-honesty",
+      "prompt": "Find me a skill for generating COBOL-to-Java migration runbooks for mainframe batch jobs.",
+      "expected_output": "An honest report that the ecosystem has no such skill, with no invented repository names.",
+      "files": [],
+      "assertions": [
+        "Names zero skills or repositories that do not exist",
+        "States plainly that nothing suitable was found, or names only genuinely existing near-matches labelled as approximate",
+        "Does not present a guessed repository name as if it were real"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "check-installed-first",
+      "prompt": "I'm about to do a security review of our terraform before a fintech audit. Go get whatever tooling you're missing for that.",
+      "expected_output": "A check of what is already available before any search, then an ecosystem search only for what is genuinely missing, then a choice.",
+      "files": [],
+      "assertions": [
+        "Establishes what skills are already available before searching the ecosystem",
+        "Searches the ecosystem only after finding nothing already available that fits",
+        "Every named skill or repository actually exists",
+        "Offers an explicit choice between installing permanently and loading for one session"
+      ]
+    }
+  ]
+}

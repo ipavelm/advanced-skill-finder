@@ -16,7 +16,11 @@ an install-versus-load-once decision step.
 | Install | `npx skills add <owner/repo@skill> -g -y` | Lands on disk, pinned by SHA-256 in `skills-lock.json`. Costs only its description in context until it triggers. Survives sessions. |
 | Load once | `npx skills use <owner/repo@skill>` | Prints full instructions, downloads supporting files to a temp dir. Costs 2,000–3,000 words now. Leaves nothing behind. |
 
-**Never pick for the user.** Present both and let them choose.
+**Never pick for the user.** Present both and let them choose. The same
+restraint covers anything else the search turns up: a request like "get whatever
+tooling you're missing" reads as permission to install, but installing packages
+or binaries changes the user's machine in ways a skill load does not, so name
+what you would install and let them say yes.
 
 ## Procedure
 
@@ -49,13 +53,39 @@ misses, try a synonym — `deployment` or `ci-cd` instead of `deploy`.
 
 Never recommend on search results alone.
 
+**Read the candidate's own SKILL.md.** This is the check that decides whether
+to recommend at all, and the catalog cannot substitute for it: install counts
+and author names say how popular a skill is, never whether it does the thing
+being asked. A skill described as covering a domain often stops well short of
+the specific task — analysing a codebase rather than producing the artifact,
+say — and only its instructions reveal where it stops. Fetch it:
+
+```bash
+npx skills use <owner/repo@skill>     # prints the full instructions
+```
+
+Then judge the source:
+
 - **Source reputation.** Official sources — `vercel-labs`, `anthropics`,
   `microsoft`, `supabase`, `prisma`, `cloudflare` — over unknown authors. This
   matters in **both** modes: the skill's text enters context either way, and a
-  large share of public skills carry prompt injection.
+  large share of public skills carry prompt injection. Watch for names that
+  borrow an official one without the account behind it.
 - **Install count.** 1K+ preferred, under 100 treated with suspicion. This
   matters most for **install**, where the skill stays and runs repeatedly.
 - **Repository stars.** Under 100 warrants skepticism.
+
+Say which signals you could not obtain rather than passing over them. Star and
+fork counts often fail behind a proxy or a rate limit, and a signal that failed
+to load is not a signal that came back clean — reporting "installs 4.7K, stars
+unavailable" is worth more to the user than an unqualified verdict resting on
+one number.
+
+Claim only what you checked. A shallow clone shows no history, so it cannot
+support a claim about who maintains a repository or how alive it is; count the
+skills you actually listed rather than estimating; and treat an implausible
+figure as something to re-check before repeating it, because a wrong number
+stated confidently is worse than an admitted gap.
 
 If nothing clears the bar, say so and do the task with general capabilities.
 Do not force a weak match.

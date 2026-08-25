@@ -1,0 +1,40 @@
+{
+  "eval_name": "vet-named-repo",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "Inspects the actual repository or its catalog entry rather than describing it from memory",
+      "passed": true,
+      "evidence": "Transcript is a full command log against a real clone: `git clone https://github.com/obra/superpowers /home/user/obra/superpowers` after `gh` and `api.github.com` were blocked (HTTP 403), then `ls -A`, `du -sh` (7.1M), `find -maxdepth 2`, `cat package.json .claude-plugin/plugin.json hooks/hooks.json`, `cat hooks/session-start`, greps over server.cjs, `git shortlog -sn --all`, `git log --format='%ci' | uniq -c`, plus a real `claude plugin install superpowers@superpowers-marketplace` under `HOME=$(mktemp -d)` and a `diff -rq` of the installed cache against the source."
+    },
+    {
+      "text": "Reports concrete contents (skills present, or install count, or what it does)",
+      "passed": true,
+      "evidence": "Describes the pipeline concretely ('brainstorm a spec -> git worktree -> write a detailed plan -> dispatch subagents per task with two-stage review -> strict red/green TDD -> code review -> merge/PR'), counts '~14 markdown skill files' (matches the 14 dirs under skills/ in its own `find` output), sizes the executable surface ('`hooks/session-start`, 2.3 KB' matches `-rwxr-xr-x 1 root root 2274`; '~1.4k lines' matches `wc -l` total 1432), cites '~1.0M installs' from the WebFetch of the plugin directory, and the pinned commit `b36e082` / v6.3.0 with a byte-identical diff."
+    },
+    {
+      "text": "Raises the risk of running third-party skill content",
+      "passed": true,
+      "evidence": "A dedicated audit table covering install-time code execution ('`package.json` has no `scripts` block and no dependencies'), executable surface, network calls, credential access (backed by the `id_rsa|.aws/credentials|.env|ANTHROPIC_API_KEY|process.env` grep in the transcript), and reported security issues. It then names two live risks: documented telemetry (logo pixel with version tag, opt-out env vars verified in server.cjs lines 106-112) and a local web server; plus 'it is a behavioral takeover, by design' about the always-on `<EXTREMELY_IMPORTANT>` injection, and 'listed, but **not** Anthropic-*verified*'."
+    },
+    {
+      "text": "Ends with a clear recommendation or an install-versus-load-once choice",
+      "passed": true,
+      "evidence": "'What I'd do' section: 'Install it from Anthropic's official marketplace \u2014 `/plugin install superpowers@claude-plugins-official` \u2014 rather than adding a third-party marketplace... Set `SUPERPOWERS_DISABLE_TELEMETRY=1`... live with it for a week on real feature work', with a stated non-fit condition ('If most of your agent work is small edits and quick questions... this is probably not for you'). It is a recommendation, not a load-once-versus-install choice \u2014 no lightweight trial route is offered, and the run had already installed the plugin (into a throwaway HOME) rather than presenting the option first."
+    }
+  ],
+  "verification": {
+    "refs_named": 0,
+    "refs_real": 0,
+    "refs_invented": 0,
+    "refs_in_catalog": 0,
+    "refs": []
+  },
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0,
+    "not_applicable": 0
+  }
+}

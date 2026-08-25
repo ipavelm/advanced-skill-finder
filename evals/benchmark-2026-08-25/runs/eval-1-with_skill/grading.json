@@ -1,0 +1,62 @@
+{
+  "eval_name": "vet-named-repo",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "Inspects the actual repository or its catalog entry rather than describing it from memory",
+      "passed": true,
+      "evidence": "Transcript shows real inspection, not recall: step 2 `npx -y skills@latest find superpowers` returning the registry listing; step 6 `git clone --depth 1 https://github.com/obra/superpowers.git sp` plus a file inventory; steps 7-12 cat/grep of `hooks/hooks.json`, `hooks/session-start`, `.claude-plugin/plugin.json`, `skills/brainstorming/scripts/server.cjs`, `skills/using-superpowers/SKILL.md`; step 13 WebFetch of the claude.com/plugins listing; steps 15-16 an actual `npx skills add` into a throwaway HOME. It also documents a dead end honestly ('Access denied: repository \"obra/superpowers\" is not configured for this session') and worked around it by cloning."
+    },
+    {
+      "text": "Reports concrete contents (skills present, or install count, or what it does)",
+      "passed": true,
+      "evidence": "Response names the skills ('TDD, systematic debugging, writing/executing plans, subagent-driven development, code review (both giving and receiving), git worktrees, and verification-before-completion'), per-skill install counts from the registry ('338.6K (`brainstorming`)'), repo shape ('224 files', '~35 dated design/plan documents under `docs/superpowers/`'), and the exact installed footprint (`~/.agents/skills/brainstorming/...`, `.skill-lock.json` with `skillFolderHash sha256 b58d55b6...`) \u2014 all traceable to transcript commands. Minor inaccuracy: it says '15 skills' while its own directory listing and the registry output enumerate 14."
+    },
+    {
+      "text": "Raises the risk of running third-party skill content",
+      "passed": true,
+      "evidence": "An explicit 'Is it safe to install?' section based on reading the executable parts: the SessionStart hook audit, greps for `--dangerously-skip-permissions` / `bypassPermissions` / `--no-verify` / force-push / `sudo` / `curl | sh` / `eval`, the outbound-URL sweep, and the local-server auth review. It also flags governance risk directly: 'it is NOT \"Anthropic verified\" ... third-party maintained \u2014 by one individual, not an org. Bus factor of one', the registry name collision ('you'll install a video-generation tool expecting a dev methodology'), and the always-on prompt injection ('IF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE')."
+    },
+    {
+      "text": "Ends with a clear recommendation or an install-versus-load-once choice",
+      "passed": true,
+      "evidence": "Closes with three enumerated options (load once via `npx skills use`, one pinned skill via `npx skills add`, or the full plugin), an unambiguous recommendation \u2014 'My recommendation: don't start with the full plugin... Try `systematic-debugging` or `brainstorming`' \u2014 a statement that nothing was installed ('every command above ran under a throwaway `HOME`'), and a direct question back: 'Which do you want \u2014 load-once, one pinned skill, or the full plugin?'"
+    }
+  ],
+  "verification": {
+    "refs_named": 3,
+    "refs_real": 3,
+    "refs_invented": 0,
+    "refs_in_catalog": 3,
+    "refs": [
+      {
+        "ref": "obra/superpowers@systematic-debugging",
+        "cited_as": "owner/repo@skill",
+        "exists": true,
+        "in_catalog": true,
+        "catalog_evidence": "listed as obra/superpowers@systematic-debugging for query 'systematic-debugging'"
+      },
+      {
+        "ref": "obra/superpowers",
+        "cited_as": "`owner/repo`",
+        "exists": true,
+        "in_catalog": true,
+        "catalog_evidence": "listed as a repository for query 'superpowers'"
+      },
+      {
+        "ref": "skills-101/superpowers",
+        "cited_as": "`owner/repo`",
+        "exists": true,
+        "in_catalog": true,
+        "catalog_evidence": "listed as a repository for query 'superpowers'"
+      }
+    ]
+  },
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0,
+    "not_applicable": 0
+  }
+}
