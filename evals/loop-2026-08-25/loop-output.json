@@ -1,0 +1,1390 @@
+{
+  "exit_reason": "max_iterations (5)",
+  "original_description": "Discover agent skills from the open ecosystem and load them either permanently or for a single session. Use when the user says \"find a skill for X\", asks \"is there a skill that can...\", names a skill or repository to try, or wants to extend agent capabilities. Also use before starting specialized or complex work \u2014 framework-specific implementation, deployment, testing strategy, document or data tooling \u2014 when no already-installed skill covers it. Check the available-skills list first, and search the ecosystem only if nothing there fits. Always offers a choice between installing and one-off loading before touching anything.",
+  "best_description": "Use this whenever the user is about to do serious, unfamiliar, or high-stakes work and would rather follow a proven external playbook than your improvisation \u2014 threat modeling and security review, testing strategy, big migrations and upgrades, infra/IaC and PR review, deployment, new frameworks, SDKs, APIs, or file formats. The strongest cues are situational, not the word \"skill\": \"I've never done this at this scale\", \"I don't trust my instincts\", \"has someone written this down\", \"find something battle-tested / proven / repeatable\", \"set it up so it's there next time\", \"what tooling are you missing for our stack \u2014 go get it\". Also use when they name a repo, author, or skill and want it found, judged, or vetted as safe to install. Search the open agent-skills ecosystem, check the source's reputation, then offer install-permanently versus load-just-once and let them pick. Not for authoring, listing, or deleting their own skills, or for following their team's internal docs.",
+  "best_score": "5/8",
+  "best_train_score": "6/12",
+  "best_test_score": "5/8",
+  "final_description": "Stop and use this before improvising a process out of your own judgment. Trigger whenever the user wants a methodology, checklist, runbook, or review process for consequential work \u2014 threat modeling and security review, test strategy, large migrations and upgrades, Terraform/Kubernetes and infra PR review, deploys, unfamiliar frameworks, APIs, or file formats \u2014 and would rather follow something published and battle-tested than your guesses. The tells are situational, not the word \"skill\": stakes or scale they've never handled, distrust of their own instincts, wanting it there again next session, or asking what tooling you're missing for their stack. Also use to find, evaluate, or safety-vet a named repo, author, or skill. Search the open agent-skills ecosystem, weigh the source's reputation, then offer install-permanently versus load-just-once. Not for authoring, listing, or deleting their own skills, or following their team's internal docs.",
+  "iterations_run": 5,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Discover agent skills from the open ecosystem and load them either permanently or for a single session. Use when the user says \"find a skill for X\", asks \"is there a skill that can...\", names a skill or repository to try, or wants to extend agent capabilities. Also use before starting specialized or complex work \u2014 framework-specific implementation, deployment, testing strategy, document or data tooling \u2014 when no already-installed skill covers it. Check the available-skills list first, and search the ecosystem only if nothing there fits. Always offers a choice between installing and one-off loading before touching anything.",
+      "train_passed": 6,
+      "train_failed": 6,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "i have to write a threat model for our payments api before the soc2 audit. i've read the owasp material but i want a repeatable process, not a wiki page. see if someone has published one",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "qa is two people and 4000 manual cases in a google sheet. i want to build a real testing strategy out of that but i don't trust my instincts here \u2014 find something proven and tell me whether to install it for good or just use it this once",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "found a repo called addyosmani/agent-skills \u2014 is the stuff in it any good? i mostly care about the frontend performance ones and whether it's safe to install",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "honestly, what are you missing to be actually useful on our kubernetes stuff? 3 clusters, argocd, and i re-explain the same context every session. go get whatever tooling would fix that",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "we're moving a 60k-line django monolith to postgres 16 next month and i've never done a migration this size. i'd rather follow someone's battle-tested checklist than my own guesses \u2014 find one and set it up so it's there next time too",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "i just took over infra at a 12-person fintech and it's all terraform but nobody left a runbook. i need to get to where i can review infra PRs safely and catch the stuff that takes prod down. is there something published that encodes how to do this properly or am i inventing it from scratch",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "write me a skill from scratch that enforces our commit convention \u2014 conventional commits plus a jira ticket id in the footer",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "remove the xlsx skill, i never use it and it keeps triggering on plain csv files",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what skills do i have enabled right now? i lost track after installing a bunch last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the actual difference between a skill and a plugin in claude code? i keep mixing them up",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add terraform to this project's ci \u2014 write the github actions workflow, we already know how we want it structured",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our team wiki has a page on how we run postmortems \u2014 follow that process for yesterday's incident",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "we're picking between prisma and drizzle for a new service and i keep going in circles. is there a playbook that walks through this kind of decision properly instead of me reading 40 blog posts",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "check out supabase/agent-skills for me \u2014 saw it mentioned in a thread and want to know if there's anything in there worth adding before i start our auth rewrite",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "boss wants a design system audit of our react app by friday, 200+ components in packages/ui, and i honestly don't know what a proper audit even covers. anything out there i can lean on?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "our org has a deploy plugin in the internal catalog \u2014 check whether it's enabled for me",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "update the description in our internal code-review skill, it triggers on way too much and it's getting annoying",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "setting up ci for a monorepo, 7 packages on turborepo, e2e suite fails maybe 1 in 5 runs. before i start hacking at the actions yaml is there an established approach i should be following",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "the pptx skill blew up on slide 12 of this deck with some relationship error, figure out what's wrong with the file",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "i installed a skill from some random repo last week and now i'm nervous. read through it and tell me if it does anything sketchy",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 6,
+      "failed": 6,
+      "total": 12,
+      "results": [
+        {
+          "query": "i have to write a threat model for our payments api before the soc2 audit. i've read the owasp material but i want a repeatable process, not a wiki page. see if someone has published one",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "qa is two people and 4000 manual cases in a google sheet. i want to build a real testing strategy out of that but i don't trust my instincts here \u2014 find something proven and tell me whether to install it for good or just use it this once",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "found a repo called addyosmani/agent-skills \u2014 is the stuff in it any good? i mostly care about the frontend performance ones and whether it's safe to install",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "honestly, what are you missing to be actually useful on our kubernetes stuff? 3 clusters, argocd, and i re-explain the same context every session. go get whatever tooling would fix that",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "we're moving a 60k-line django monolith to postgres 16 next month and i've never done a migration this size. i'd rather follow someone's battle-tested checklist than my own guesses \u2014 find one and set it up so it's there next time too",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "i just took over infra at a 12-person fintech and it's all terraform but nobody left a runbook. i need to get to where i can review infra PRs safely and catch the stuff that takes prod down. is there something published that encodes how to do this properly or am i inventing it from scratch",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "write me a skill from scratch that enforces our commit convention \u2014 conventional commits plus a jira ticket id in the footer",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "remove the xlsx skill, i never use it and it keeps triggering on plain csv files",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what skills do i have enabled right now? i lost track after installing a bunch last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the actual difference between a skill and a plugin in claude code? i keep mixing them up",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add terraform to this project's ci \u2014 write the github actions workflow, we already know how we want it structured",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our team wiki has a page on how we run postmortems \u2014 follow that process for yesterday's incident",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "description": "Reach for this when the user would rather follow an established, published playbook than your improvised judgment \u2014 signals like \"find something proven\", \"has someone written this down\", \"battle-tested\", \"I don't trust my instincts\", or \"go get whatever tooling you're missing\". Typical shape: serious specialized work about to begin (threat modeling and security process, testing strategy, large migrations, infra and IaC review, deployment, framework or data tooling) where guessing is expensive and a known process exists somewhere. Also use when the user names a skill, repo, or author and wants it found, judged, or vetted as safe. Search the open agent-skills ecosystem, check the source's reputation, then offer install-permanently versus load-just-once and let the user choose. Skip when an already-installed skill covers the need, or when the user is authoring, listing, or removing their own skills.",
+      "train_passed": 7,
+      "train_failed": 5,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "i have to write a threat model for our payments api before the soc2 audit. i've read the owasp material but i want a repeatable process, not a wiki page. see if someone has published one",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "qa is two people and 4000 manual cases in a google sheet. i want to build a real testing strategy out of that but i don't trust my instincts here \u2014 find something proven and tell me whether to install it for good or just use it this once",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "found a repo called addyosmani/agent-skills \u2014 is the stuff in it any good? i mostly care about the frontend performance ones and whether it's safe to install",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "honestly, what are you missing to be actually useful on our kubernetes stuff? 3 clusters, argocd, and i re-explain the same context every session. go get whatever tooling would fix that",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "i just took over infra at a 12-person fintech and it's all terraform but nobody left a runbook. i need to get to where i can review infra PRs safely and catch the stuff that takes prod down. is there something published that encodes how to do this properly or am i inventing it from scratch",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "we're moving a 60k-line django monolith to postgres 16 next month and i've never done a migration this size. i'd rather follow someone's battle-tested checklist than my own guesses \u2014 find one and set it up so it's there next time too",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "write me a skill from scratch that enforces our commit convention \u2014 conventional commits plus a jira ticket id in the footer",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "remove the xlsx skill, i never use it and it keeps triggering on plain csv files",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what skills do i have enabled right now? i lost track after installing a bunch last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the actual difference between a skill and a plugin in claude code? i keep mixing them up",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add terraform to this project's ci \u2014 write the github actions workflow, we already know how we want it structured",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our team wiki has a page on how we run postmortems \u2014 follow that process for yesterday's incident",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "we're picking between prisma and drizzle for a new service and i keep going in circles. is there a playbook that walks through this kind of decision properly instead of me reading 40 blog posts",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "check out supabase/agent-skills for me \u2014 saw it mentioned in a thread and want to know if there's anything in there worth adding before i start our auth rewrite",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "boss wants a design system audit of our react app by friday, 200+ components in packages/ui, and i honestly don't know what a proper audit even covers. anything out there i can lean on?",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "our org has a deploy plugin in the internal catalog \u2014 check whether it's enabled for me",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "update the description in our internal code-review skill, it triggers on way too much and it's getting annoying",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "setting up ci for a monorepo, 7 packages on turborepo, e2e suite fails maybe 1 in 5 runs. before i start hacking at the actions yaml is there an established approach i should be following",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "the pptx skill blew up on slide 12 of this deck with some relationship error, figure out what's wrong with the file",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "i installed a skill from some random repo last week and now i'm nervous. read through it and tell me if it does anything sketchy",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 7,
+      "failed": 5,
+      "total": 12,
+      "results": [
+        {
+          "query": "i have to write a threat model for our payments api before the soc2 audit. i've read the owasp material but i want a repeatable process, not a wiki page. see if someone has published one",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "qa is two people and 4000 manual cases in a google sheet. i want to build a real testing strategy out of that but i don't trust my instincts here \u2014 find something proven and tell me whether to install it for good or just use it this once",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "found a repo called addyosmani/agent-skills \u2014 is the stuff in it any good? i mostly care about the frontend performance ones and whether it's safe to install",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "honestly, what are you missing to be actually useful on our kubernetes stuff? 3 clusters, argocd, and i re-explain the same context every session. go get whatever tooling would fix that",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "i just took over infra at a 12-person fintech and it's all terraform but nobody left a runbook. i need to get to where i can review infra PRs safely and catch the stuff that takes prod down. is there something published that encodes how to do this properly or am i inventing it from scratch",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "we're moving a 60k-line django monolith to postgres 16 next month and i've never done a migration this size. i'd rather follow someone's battle-tested checklist than my own guesses \u2014 find one and set it up so it's there next time too",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "write me a skill from scratch that enforces our commit convention \u2014 conventional commits plus a jira ticket id in the footer",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "remove the xlsx skill, i never use it and it keeps triggering on plain csv files",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what skills do i have enabled right now? i lost track after installing a bunch last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the actual difference between a skill and a plugin in claude code? i keep mixing them up",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add terraform to this project's ci \u2014 write the github actions workflow, we already know how we want it structured",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our team wiki has a page on how we run postmortems \u2014 follow that process for yesterday's incident",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 3,
+      "description": "Use this to fetch someone else's published playbook \u2014 a community agent skill \u2014 instead of improvising from your own judgment. Trigger even when the user never says the word \"skill\": they're about to start high-stakes specialized work (threat modeling and security process, testing strategy, large migrations or upgrades, infra/IaC audits, deployment, unfamiliar frameworks, APIs, or file formats) and they want something proven, battle-tested, repeatable, or already written down by someone who has done it \u2014 or they say they don't trust their own instincts here. Also trigger when they name a repo, author, or skill and want it found, evaluated, or vetted as safe to install, or when they ask what capabilities/tooling you're missing for their stack and tell you to go get it. Search the open ecosystem, check the source's reputation, then offer install-permanently versus load-just-once. Not for creating, listing, editing, or removing the user's own skills, or for following their team's own internal docs.",
+      "train_passed": 6,
+      "train_failed": 6,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "i have to write a threat model for our payments api before the soc2 audit. i've read the owasp material but i want a repeatable process, not a wiki page. see if someone has published one",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "qa is two people and 4000 manual cases in a google sheet. i want to build a real testing strategy out of that but i don't trust my instincts here \u2014 find something proven and tell me whether to install it for good or just use it this once",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "found a repo called addyosmani/agent-skills \u2014 is the stuff in it any good? i mostly care about the frontend performance ones and whether it's safe to install",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "honestly, what are you missing to be actually useful on our kubernetes stuff? 3 clusters, argocd, and i re-explain the same context every session. go get whatever tooling would fix that",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "i just took over infra at a 12-person fintech and it's all terraform but nobody left a runbook. i need to get to where i can review infra PRs safely and catch the stuff that takes prod down. is there something published that encodes how to do this properly or am i inventing it from scratch",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "we're moving a 60k-line django monolith to postgres 16 next month and i've never done a migration this size. i'd rather follow someone's battle-tested checklist than my own guesses \u2014 find one and set it up so it's there next time too",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "write me a skill from scratch that enforces our commit convention \u2014 conventional commits plus a jira ticket id in the footer",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "remove the xlsx skill, i never use it and it keeps triggering on plain csv files",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what skills do i have enabled right now? i lost track after installing a bunch last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the actual difference between a skill and a plugin in claude code? i keep mixing them up",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add terraform to this project's ci \u2014 write the github actions workflow, we already know how we want it structured",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our team wiki has a page on how we run postmortems \u2014 follow that process for yesterday's incident",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "we're picking between prisma and drizzle for a new service and i keep going in circles. is there a playbook that walks through this kind of decision properly instead of me reading 40 blog posts",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "check out supabase/agent-skills for me \u2014 saw it mentioned in a thread and want to know if there's anything in there worth adding before i start our auth rewrite",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "boss wants a design system audit of our react app by friday, 200+ components in packages/ui, and i honestly don't know what a proper audit even covers. anything out there i can lean on?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "setting up ci for a monorepo, 7 packages on turborepo, e2e suite fails maybe 1 in 5 runs. before i start hacking at the actions yaml is there an established approach i should be following",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "our org has a deploy plugin in the internal catalog \u2014 check whether it's enabled for me",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "update the description in our internal code-review skill, it triggers on way too much and it's getting annoying",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "the pptx skill blew up on slide 12 of this deck with some relationship error, figure out what's wrong with the file",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "i installed a skill from some random repo last week and now i'm nervous. read through it and tell me if it does anything sketchy",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 6,
+      "failed": 6,
+      "total": 12,
+      "results": [
+        {
+          "query": "i have to write a threat model for our payments api before the soc2 audit. i've read the owasp material but i want a repeatable process, not a wiki page. see if someone has published one",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "qa is two people and 4000 manual cases in a google sheet. i want to build a real testing strategy out of that but i don't trust my instincts here \u2014 find something proven and tell me whether to install it for good or just use it this once",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "found a repo called addyosmani/agent-skills \u2014 is the stuff in it any good? i mostly care about the frontend performance ones and whether it's safe to install",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "honestly, what are you missing to be actually useful on our kubernetes stuff? 3 clusters, argocd, and i re-explain the same context every session. go get whatever tooling would fix that",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "i just took over infra at a 12-person fintech and it's all terraform but nobody left a runbook. i need to get to where i can review infra PRs safely and catch the stuff that takes prod down. is there something published that encodes how to do this properly or am i inventing it from scratch",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "we're moving a 60k-line django monolith to postgres 16 next month and i've never done a migration this size. i'd rather follow someone's battle-tested checklist than my own guesses \u2014 find one and set it up so it's there next time too",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "write me a skill from scratch that enforces our commit convention \u2014 conventional commits plus a jira ticket id in the footer",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "remove the xlsx skill, i never use it and it keeps triggering on plain csv files",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what skills do i have enabled right now? i lost track after installing a bunch last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the actual difference between a skill and a plugin in claude code? i keep mixing them up",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add terraform to this project's ci \u2014 write the github actions workflow, we already know how we want it structured",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our team wiki has a page on how we run postmortems \u2014 follow that process for yesterday's incident",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 4,
+      "description": "Use this whenever the user is about to do serious, unfamiliar, or high-stakes work and would rather follow a proven external playbook than your improvisation \u2014 threat modeling and security review, testing strategy, big migrations and upgrades, infra/IaC and PR review, deployment, new frameworks, SDKs, APIs, or file formats. The strongest cues are situational, not the word \"skill\": \"I've never done this at this scale\", \"I don't trust my instincts\", \"has someone written this down\", \"find something battle-tested / proven / repeatable\", \"set it up so it's there next time\", \"what tooling are you missing for our stack \u2014 go get it\". Also use when they name a repo, author, or skill and want it found, judged, or vetted as safe to install. Search the open agent-skills ecosystem, check the source's reputation, then offer install-permanently versus load-just-once and let them pick. Not for authoring, listing, or deleting their own skills, or for following their team's internal docs.",
+      "train_passed": 6,
+      "train_failed": 6,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "i have to write a threat model for our payments api before the soc2 audit. i've read the owasp material but i want a repeatable process, not a wiki page. see if someone has published one",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "qa is two people and 4000 manual cases in a google sheet. i want to build a real testing strategy out of that but i don't trust my instincts here \u2014 find something proven and tell me whether to install it for good or just use it this once",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "found a repo called addyosmani/agent-skills \u2014 is the stuff in it any good? i mostly care about the frontend performance ones and whether it's safe to install",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "honestly, what are you missing to be actually useful on our kubernetes stuff? 3 clusters, argocd, and i re-explain the same context every session. go get whatever tooling would fix that",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "i just took over infra at a 12-person fintech and it's all terraform but nobody left a runbook. i need to get to where i can review infra PRs safely and catch the stuff that takes prod down. is there something published that encodes how to do this properly or am i inventing it from scratch",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "we're moving a 60k-line django monolith to postgres 16 next month and i've never done a migration this size. i'd rather follow someone's battle-tested checklist than my own guesses \u2014 find one and set it up so it's there next time too",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "write me a skill from scratch that enforces our commit convention \u2014 conventional commits plus a jira ticket id in the footer",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "remove the xlsx skill, i never use it and it keeps triggering on plain csv files",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what skills do i have enabled right now? i lost track after installing a bunch last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the actual difference between a skill and a plugin in claude code? i keep mixing them up",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add terraform to this project's ci \u2014 write the github actions workflow, we already know how we want it structured",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our team wiki has a page on how we run postmortems \u2014 follow that process for yesterday's incident",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 5,
+      "test_failed": 3,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "we're picking between prisma and drizzle for a new service and i keep going in circles. is there a playbook that walks through this kind of decision properly instead of me reading 40 blog posts",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "boss wants a design system audit of our react app by friday, 200+ components in packages/ui, and i honestly don't know what a proper audit even covers. anything out there i can lean on?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "check out supabase/agent-skills for me \u2014 saw it mentioned in a thread and want to know if there's anything in there worth adding before i start our auth rewrite",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "our org has a deploy plugin in the internal catalog \u2014 check whether it's enabled for me",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "setting up ci for a monorepo, 7 packages on turborepo, e2e suite fails maybe 1 in 5 runs. before i start hacking at the actions yaml is there an established approach i should be following",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "update the description in our internal code-review skill, it triggers on way too much and it's getting annoying",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "the pptx skill blew up on slide 12 of this deck with some relationship error, figure out what's wrong with the file",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "i installed a skill from some random repo last week and now i'm nervous. read through it and tell me if it does anything sketchy",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 6,
+      "failed": 6,
+      "total": 12,
+      "results": [
+        {
+          "query": "i have to write a threat model for our payments api before the soc2 audit. i've read the owasp material but i want a repeatable process, not a wiki page. see if someone has published one",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "qa is two people and 4000 manual cases in a google sheet. i want to build a real testing strategy out of that but i don't trust my instincts here \u2014 find something proven and tell me whether to install it for good or just use it this once",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "found a repo called addyosmani/agent-skills \u2014 is the stuff in it any good? i mostly care about the frontend performance ones and whether it's safe to install",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "honestly, what are you missing to be actually useful on our kubernetes stuff? 3 clusters, argocd, and i re-explain the same context every session. go get whatever tooling would fix that",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "i just took over infra at a 12-person fintech and it's all terraform but nobody left a runbook. i need to get to where i can review infra PRs safely and catch the stuff that takes prod down. is there something published that encodes how to do this properly or am i inventing it from scratch",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "we're moving a 60k-line django monolith to postgres 16 next month and i've never done a migration this size. i'd rather follow someone's battle-tested checklist than my own guesses \u2014 find one and set it up so it's there next time too",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "write me a skill from scratch that enforces our commit convention \u2014 conventional commits plus a jira ticket id in the footer",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "remove the xlsx skill, i never use it and it keeps triggering on plain csv files",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what skills do i have enabled right now? i lost track after installing a bunch last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the actual difference between a skill and a plugin in claude code? i keep mixing them up",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add terraform to this project's ci \u2014 write the github actions workflow, we already know how we want it structured",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our team wiki has a page on how we run postmortems \u2014 follow that process for yesterday's incident",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 5,
+      "description": "Stop and use this before improvising a process out of your own judgment. Trigger whenever the user wants a methodology, checklist, runbook, or review process for consequential work \u2014 threat modeling and security review, test strategy, large migrations and upgrades, Terraform/Kubernetes and infra PR review, deploys, unfamiliar frameworks, APIs, or file formats \u2014 and would rather follow something published and battle-tested than your guesses. The tells are situational, not the word \"skill\": stakes or scale they've never handled, distrust of their own instincts, wanting it there again next session, or asking what tooling you're missing for their stack. Also use to find, evaluate, or safety-vet a named repo, author, or skill. Search the open agent-skills ecosystem, weigh the source's reputation, then offer install-permanently versus load-just-once. Not for authoring, listing, or deleting their own skills, or following their team's internal docs.",
+      "train_passed": 6,
+      "train_failed": 6,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "qa is two people and 4000 manual cases in a google sheet. i want to build a real testing strategy out of that but i don't trust my instincts here \u2014 find something proven and tell me whether to install it for good or just use it this once",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "i have to write a threat model for our payments api before the soc2 audit. i've read the owasp material but i want a repeatable process, not a wiki page. see if someone has published one",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "found a repo called addyosmani/agent-skills \u2014 is the stuff in it any good? i mostly care about the frontend performance ones and whether it's safe to install",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "honestly, what are you missing to be actually useful on our kubernetes stuff? 3 clusters, argocd, and i re-explain the same context every session. go get whatever tooling would fix that",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "i just took over infra at a 12-person fintech and it's all terraform but nobody left a runbook. i need to get to where i can review infra PRs safely and catch the stuff that takes prod down. is there something published that encodes how to do this properly or am i inventing it from scratch",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "we're moving a 60k-line django monolith to postgres 16 next month and i've never done a migration this size. i'd rather follow someone's battle-tested checklist than my own guesses \u2014 find one and set it up so it's there next time too",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "write me a skill from scratch that enforces our commit convention \u2014 conventional commits plus a jira ticket id in the footer",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "remove the xlsx skill, i never use it and it keeps triggering on plain csv files",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what skills do i have enabled right now? i lost track after installing a bunch last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the actual difference between a skill and a plugin in claude code? i keep mixing them up",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add terraform to this project's ci \u2014 write the github actions workflow, we already know how we want it structured",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our team wiki has a page on how we run postmortems \u2014 follow that process for yesterday's incident",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "we're picking between prisma and drizzle for a new service and i keep going in circles. is there a playbook that walks through this kind of decision properly instead of me reading 40 blog posts",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "check out supabase/agent-skills for me \u2014 saw it mentioned in a thread and want to know if there's anything in there worth adding before i start our auth rewrite",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "boss wants a design system audit of our react app by friday, 200+ components in packages/ui, and i honestly don't know what a proper audit even covers. anything out there i can lean on?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "our org has a deploy plugin in the internal catalog \u2014 check whether it's enabled for me",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "setting up ci for a monorepo, 7 packages on turborepo, e2e suite fails maybe 1 in 5 runs. before i start hacking at the actions yaml is there an established approach i should be following",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "update the description in our internal code-review skill, it triggers on way too much and it's getting annoying",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "the pptx skill blew up on slide 12 of this deck with some relationship error, figure out what's wrong with the file",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "i installed a skill from some random repo last week and now i'm nervous. read through it and tell me if it does anything sketchy",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 6,
+      "failed": 6,
+      "total": 12,
+      "results": [
+        {
+          "query": "qa is two people and 4000 manual cases in a google sheet. i want to build a real testing strategy out of that but i don't trust my instincts here \u2014 find something proven and tell me whether to install it for good or just use it this once",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "i have to write a threat model for our payments api before the soc2 audit. i've read the owasp material but i want a repeatable process, not a wiki page. see if someone has published one",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "found a repo called addyosmani/agent-skills \u2014 is the stuff in it any good? i mostly care about the frontend performance ones and whether it's safe to install",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "honestly, what are you missing to be actually useful on our kubernetes stuff? 3 clusters, argocd, and i re-explain the same context every session. go get whatever tooling would fix that",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "i just took over infra at a 12-person fintech and it's all terraform but nobody left a runbook. i need to get to where i can review infra PRs safely and catch the stuff that takes prod down. is there something published that encodes how to do this properly or am i inventing it from scratch",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "we're moving a 60k-line django monolith to postgres 16 next month and i've never done a migration this size. i'd rather follow someone's battle-tested checklist than my own guesses \u2014 find one and set it up so it's there next time too",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "write me a skill from scratch that enforces our commit convention \u2014 conventional commits plus a jira ticket id in the footer",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "remove the xlsx skill, i never use it and it keeps triggering on plain csv files",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what skills do i have enabled right now? i lost track after installing a bunch last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the actual difference between a skill and a plugin in claude code? i keep mixing them up",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "add terraform to this project's ci \u2014 write the github actions workflow, we already know how we want it structured",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "our team wiki has a page on how we run postmortems \u2014 follow that process for yesterday's incident",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

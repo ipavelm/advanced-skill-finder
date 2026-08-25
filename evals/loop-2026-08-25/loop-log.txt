@@ -1,0 +1,157 @@
+Split: 12 train, 8 test (holdout=0.4)
+
+============================================================
+Iteration 1/5
+Description: Discover agent skills from the open ecosystem and load them either permanently or for a single session. Use when the user says "find a skill for X", asks "is there a skill that can...", names a skill or repository to try, or wants to extend agent capabilities. Also use before starting specialized or complex work — framework-specific implementation, deployment, testing strategy, document or data tooling — when no already-installed skill covers it. Check the available-skills list first, and search the ecosystem only if nothing there fits. Always offers a choice between installing and one-off loading before touching anything.
+============================================================
+Train: 20/36 correct, precision=100% recall=11% accuracy=56% (219.8s)
+  [FAIL] rate=0/3 expected=True: i have to write a threat model for our payments api before t
+  [FAIL] rate=1/3 expected=True: qa is two people and 4000 manual cases in a google sheet. i 
+  [FAIL] rate=0/3 expected=True: found a repo called addyosmani/agent-skills — is the stuff i
+  [FAIL] rate=0/3 expected=True: honestly, what are you missing to be actually useful on our 
+  [FAIL] rate=1/3 expected=True: we're moving a 60k-line django monolith to postgres 16 next 
+  [FAIL] rate=0/3 expected=True: i just took over infra at a 12-person fintech and it's all t
+  [PASS] rate=0/3 expected=False: write me a skill from scratch that enforces our commit conve
+  [PASS] rate=0/3 expected=False: remove the xlsx skill, i never use it and it keeps triggerin
+  [PASS] rate=0/3 expected=False: what skills do i have enabled right now? i lost track after 
+  [PASS] rate=0/3 expected=False: what's the actual difference between a skill and a plugin in
+  [PASS] rate=0/3 expected=False: add terraform to this project's ci — write the github action
+  [PASS] rate=0/3 expected=False: our team wiki has a page on how we run postmortems — follow 
+Test : 12/24 correct, precision=100% recall=0% accuracy=50% (0.0s)
+  [FAIL] rate=0/3 expected=True: we're picking between prisma and drizzle for a new service a
+  [FAIL] rate=0/3 expected=True: check out supabase/agent-skills for me — saw it mentioned in
+  [FAIL] rate=0/3 expected=True: boss wants a design system audit of our react app by friday,
+  [PASS] rate=0/3 expected=False: our org has a deploy plugin in the internal catalog — check 
+  [PASS] rate=0/3 expected=False: update the description in our internal code-review skill, it
+  [FAIL] rate=0/3 expected=True: setting up ci for a monorepo, 7 packages on turborepo, e2e s
+  [PASS] rate=0/3 expected=False: the pptx skill blew up on slide 12 of this deck with some re
+  [PASS] rate=0/3 expected=False: i installed a skill from some random repo last week and now 
+
+Improving description...
+Proposed (18.5s): Reach for this when the user would rather follow an established, published playbook than your improvised judgment — signals like "find something proven", "has someone written this down", "battle-tested", "I don't trust my instincts", or "go get whatever tooling you're missing". Typical shape: serious specialized work about to begin (threat modeling and security process, testing strategy, large migrations, infra and IaC review, deployment, framework or data tooling) where guessing is expensive and a known process exists somewhere. Also use when the user names a skill, repo, or author and wants it found, judged, or vetted as safe. Search the open agent-skills ecosystem, check the source's reputation, then offer install-permanently versus load-just-once and let the user choose. Skip when an already-installed skill covers the need, or when the user is authoring, listing, or removing their own skills.
+
+============================================================
+Iteration 2/5
+Description: Reach for this when the user would rather follow an established, published playbook than your improvised judgment — signals like "find something proven", "has someone written this down", "battle-tested", "I don't trust my instincts", or "go get whatever tooling you're missing". Typical shape: serious specialized work about to begin (threat modeling and security process, testing strategy, large migrations, infra and IaC review, deployment, framework or data tooling) where guessing is expensive and a known process exists somewhere. Also use when the user names a skill, repo, or author and wants it found, judged, or vetted as safe. Search the open agent-skills ecosystem, check the source's reputation, then offer install-permanently versus load-just-once and let the user choose. Skip when an already-installed skill covers the need, or when the user is authoring, listing, or removing their own skills.
+============================================================
+Train: 23/36 correct, precision=100% recall=28% accuracy=64% (166.7s)
+  [FAIL] rate=1/3 expected=True: i have to write a threat model for our payments api before t
+  [FAIL] rate=0/3 expected=True: qa is two people and 4000 manual cases in a google sheet. i 
+  [FAIL] rate=1/3 expected=True: found a repo called addyosmani/agent-skills — is the stuff i
+  [FAIL] rate=0/3 expected=True: honestly, what are you missing to be actually useful on our 
+  [PASS] rate=2/3 expected=True: i just took over infra at a 12-person fintech and it's all t
+  [FAIL] rate=1/3 expected=True: we're moving a 60k-line django monolith to postgres 16 next 
+  [PASS] rate=0/3 expected=False: write me a skill from scratch that enforces our commit conve
+  [PASS] rate=0/3 expected=False: remove the xlsx skill, i never use it and it keeps triggerin
+  [PASS] rate=0/3 expected=False: what skills do i have enabled right now? i lost track after 
+  [PASS] rate=0/3 expected=False: what's the actual difference between a skill and a plugin in
+  [PASS] rate=0/3 expected=False: add terraform to this project's ci — write the github action
+  [PASS] rate=0/3 expected=False: our team wiki has a page on how we run postmortems — follow 
+Test : 14/24 correct, precision=100% recall=17% accuracy=58% (0.0s)
+  [FAIL] rate=1/3 expected=True: we're picking between prisma and drizzle for a new service a
+  [FAIL] rate=0/3 expected=True: check out supabase/agent-skills for me — saw it mentioned in
+  [FAIL] rate=1/3 expected=True: boss wants a design system audit of our react app by friday,
+  [PASS] rate=0/3 expected=False: our org has a deploy plugin in the internal catalog — check 
+  [PASS] rate=0/3 expected=False: update the description in our internal code-review skill, it
+  [FAIL] rate=0/3 expected=True: setting up ci for a monorepo, 7 packages on turborepo, e2e s
+  [PASS] rate=0/3 expected=False: the pptx skill blew up on slide 12 of this deck with some re
+  [PASS] rate=0/3 expected=False: i installed a skill from some random repo last week and now 
+
+Improving description...
+Proposed (24.3s): Use this to fetch someone else's published playbook — a community agent skill — instead of improvising from your own judgment. Trigger even when the user never says the word "skill": they're about to start high-stakes specialized work (threat modeling and security process, testing strategy, large migrations or upgrades, infra/IaC audits, deployment, unfamiliar frameworks, APIs, or file formats) and they want something proven, battle-tested, repeatable, or already written down by someone who has done it — or they say they don't trust their own instincts here. Also trigger when they name a repo, author, or skill and want it found, evaluated, or vetted as safe to install, or when they ask what capabilities/tooling you're missing for their stack and tell you to go get it. Search the open ecosystem, check the source's reputation, then offer install-permanently versus load-just-once. Not for creating, listing, editing, or removing the user's own skills, or for following their team's own internal docs.
+
+============================================================
+Iteration 3/5
+Description: Use this to fetch someone else's published playbook — a community agent skill — instead of improvising from your own judgment. Trigger even when the user never says the word "skill": they're about to start high-stakes specialized work (threat modeling and security process, testing strategy, large migrations or upgrades, infra/IaC audits, deployment, unfamiliar frameworks, APIs, or file formats) and they want something proven, battle-tested, repeatable, or already written down by someone who has done it — or they say they don't trust their own instincts here. Also trigger when they name a repo, author, or skill and want it found, evaluated, or vetted as safe to install, or when they ask what capabilities/tooling you're missing for their stack and tell you to go get it. Search the open ecosystem, check the source's reputation, then offer install-permanently versus load-just-once. Not for creating, listing, editing, or removing the user's own skills, or for following their team's own internal docs.
+============================================================
+Train: 21/36 correct, precision=100% recall=17% accuracy=58% (158.8s)
+  [FAIL] rate=1/3 expected=True: i have to write a threat model for our payments api before t
+  [FAIL] rate=0/3 expected=True: qa is two people and 4000 manual cases in a google sheet. i 
+  [FAIL] rate=1/3 expected=True: found a repo called addyosmani/agent-skills — is the stuff i
+  [FAIL] rate=0/3 expected=True: honestly, what are you missing to be actually useful on our 
+  [FAIL] rate=1/3 expected=True: i just took over infra at a 12-person fintech and it's all t
+  [FAIL] rate=0/3 expected=True: we're moving a 60k-line django monolith to postgres 16 next 
+  [PASS] rate=0/3 expected=False: write me a skill from scratch that enforces our commit conve
+  [PASS] rate=0/3 expected=False: remove the xlsx skill, i never use it and it keeps triggerin
+  [PASS] rate=0/3 expected=False: what skills do i have enabled right now? i lost track after 
+  [PASS] rate=0/3 expected=False: what's the actual difference between a skill and a plugin in
+  [PASS] rate=0/3 expected=False: add terraform to this project's ci — write the github action
+  [PASS] rate=0/3 expected=False: our team wiki has a page on how we run postmortems — follow 
+Test : 12/24 correct, precision=100% recall=0% accuracy=50% (0.0s)
+  [FAIL] rate=0/3 expected=True: we're picking between prisma and drizzle for a new service a
+  [FAIL] rate=0/3 expected=True: check out supabase/agent-skills for me — saw it mentioned in
+  [FAIL] rate=0/3 expected=True: boss wants a design system audit of our react app by friday,
+  [FAIL] rate=0/3 expected=True: setting up ci for a monorepo, 7 packages on turborepo, e2e s
+  [PASS] rate=0/3 expected=False: our org has a deploy plugin in the internal catalog — check 
+  [PASS] rate=0/3 expected=False: update the description in our internal code-review skill, it
+  [PASS] rate=0/3 expected=False: the pptx skill blew up on slide 12 of this deck with some re
+  [PASS] rate=0/3 expected=False: i installed a skill from some random repo last week and now 
+
+Improving description...
+Proposed (10.5s): Use this whenever the user is about to do serious, unfamiliar, or high-stakes work and would rather follow a proven external playbook than your improvisation — threat modeling and security review, testing strategy, big migrations and upgrades, infra/IaC and PR review, deployment, new frameworks, SDKs, APIs, or file formats. The strongest cues are situational, not the word "skill": "I've never done this at this scale", "I don't trust my instincts", "has someone written this down", "find something battle-tested / proven / repeatable", "set it up so it's there next time", "what tooling are you missing for our stack — go get it". Also use when they name a repo, author, or skill and want it found, judged, or vetted as safe to install. Search the open agent-skills ecosystem, check the source's reputation, then offer install-permanently versus load-just-once and let them pick. Not for authoring, listing, or deleting their own skills, or for following their team's internal docs.
+
+============================================================
+Iteration 4/5
+Description: Use this whenever the user is about to do serious, unfamiliar, or high-stakes work and would rather follow a proven external playbook than your improvisation — threat modeling and security review, testing strategy, big migrations and upgrades, infra/IaC and PR review, deployment, new frameworks, SDKs, APIs, or file formats. The strongest cues are situational, not the word "skill": "I've never done this at this scale", "I don't trust my instincts", "has someone written this down", "find something battle-tested / proven / repeatable", "set it up so it's there next time", "what tooling are you missing for our stack — go get it". Also use when they name a repo, author, or skill and want it found, judged, or vetted as safe to install. Search the open agent-skills ecosystem, check the source's reputation, then offer install-permanently versus load-just-once and let them pick. Not for authoring, listing, or deleting their own skills, or for following their team's internal docs.
+============================================================
+Train: 21/36 correct, precision=100% recall=17% accuracy=58% (185.1s)
+  [FAIL] rate=1/3 expected=True: i have to write a threat model for our payments api before t
+  [FAIL] rate=1/3 expected=True: qa is two people and 4000 manual cases in a google sheet. i 
+  [FAIL] rate=0/3 expected=True: found a repo called addyosmani/agent-skills — is the stuff i
+  [FAIL] rate=0/3 expected=True: honestly, what are you missing to be actually useful on our 
+  [FAIL] rate=1/3 expected=True: i just took over infra at a 12-person fintech and it's all t
+  [FAIL] rate=0/3 expected=True: we're moving a 60k-line django monolith to postgres 16 next 
+  [PASS] rate=0/3 expected=False: write me a skill from scratch that enforces our commit conve
+  [PASS] rate=0/3 expected=False: remove the xlsx skill, i never use it and it keeps triggerin
+  [PASS] rate=0/3 expected=False: what skills do i have enabled right now? i lost track after 
+  [PASS] rate=0/3 expected=False: what's the actual difference between a skill and a plugin in
+  [PASS] rate=0/3 expected=False: add terraform to this project's ci — write the github action
+  [PASS] rate=0/3 expected=False: our team wiki has a page on how we run postmortems — follow 
+Test : 14/24 correct, precision=100% recall=17% accuracy=58% (0.0s)
+  [PASS] rate=2/3 expected=True: we're picking between prisma and drizzle for a new service a
+  [FAIL] rate=0/3 expected=True: boss wants a design system audit of our react app by friday,
+  [FAIL] rate=0/3 expected=True: check out supabase/agent-skills for me — saw it mentioned in
+  [PASS] rate=0/3 expected=False: our org has a deploy plugin in the internal catalog — check 
+  [FAIL] rate=0/3 expected=True: setting up ci for a monorepo, 7 packages on turborepo, e2e s
+  [PASS] rate=0/3 expected=False: update the description in our internal code-review skill, it
+  [PASS] rate=0/3 expected=False: the pptx skill blew up on slide 12 of this deck with some re
+  [PASS] rate=0/3 expected=False: i installed a skill from some random repo last week and now 
+
+Improving description...
+Proposed (23.2s): Stop and use this before improvising a process out of your own judgment. Trigger whenever the user wants a methodology, checklist, runbook, or review process for consequential work — threat modeling and security review, test strategy, large migrations and upgrades, Terraform/Kubernetes and infra PR review, deploys, unfamiliar frameworks, APIs, or file formats — and would rather follow something published and battle-tested than your guesses. The tells are situational, not the word "skill": stakes or scale they've never handled, distrust of their own instincts, wanting it there again next session, or asking what tooling you're missing for their stack. Also use to find, evaluate, or safety-vet a named repo, author, or skill. Search the open agent-skills ecosystem, weigh the source's reputation, then offer install-permanently versus load-just-once. Not for authoring, listing, or deleting their own skills, or following their team's internal docs.
+
+============================================================
+Iteration 5/5
+Description: Stop and use this before improvising a process out of your own judgment. Trigger whenever the user wants a methodology, checklist, runbook, or review process for consequential work — threat modeling and security review, test strategy, large migrations and upgrades, Terraform/Kubernetes and infra PR review, deploys, unfamiliar frameworks, APIs, or file formats — and would rather follow something published and battle-tested than your guesses. The tells are situational, not the word "skill": stakes or scale they've never handled, distrust of their own instincts, wanting it there again next session, or asking what tooling you're missing for their stack. Also use to find, evaluate, or safety-vet a named repo, author, or skill. Search the open agent-skills ecosystem, weigh the source's reputation, then offer install-permanently versus load-just-once. Not for authoring, listing, or deleting their own skills, or following their team's internal docs.
+============================================================
+Train: 22/36 correct, precision=100% recall=22% accuracy=61% (181.5s)
+  [FAIL] rate=0/3 expected=True: qa is two people and 4000 manual cases in a google sheet. i 
+  [FAIL] rate=1/3 expected=True: i have to write a threat model for our payments api before t
+  [FAIL] rate=1/3 expected=True: found a repo called addyosmani/agent-skills — is the stuff i
+  [FAIL] rate=1/3 expected=True: honestly, what are you missing to be actually useful on our 
+  [FAIL] rate=1/3 expected=True: i just took over infra at a 12-person fintech and it's all t
+  [FAIL] rate=0/3 expected=True: we're moving a 60k-line django monolith to postgres 16 next 
+  [PASS] rate=0/3 expected=False: write me a skill from scratch that enforces our commit conve
+  [PASS] rate=0/3 expected=False: remove the xlsx skill, i never use it and it keeps triggerin
+  [PASS] rate=0/3 expected=False: what skills do i have enabled right now? i lost track after 
+  [PASS] rate=0/3 expected=False: what's the actual difference between a skill and a plugin in
+  [PASS] rate=0/3 expected=False: add terraform to this project's ci — write the github action
+  [PASS] rate=0/3 expected=False: our team wiki has a page on how we run postmortems — follow 
+Test : 13/24 correct, precision=100% recall=8% accuracy=54% (0.0s)
+  [FAIL] rate=1/3 expected=True: we're picking between prisma and drizzle for a new service a
+  [FAIL] rate=0/3 expected=True: check out supabase/agent-skills for me — saw it mentioned in
+  [FAIL] rate=0/3 expected=True: boss wants a design system audit of our react app by friday,
+  [PASS] rate=0/3 expected=False: our org has a deploy plugin in the internal catalog — check 
+  [FAIL] rate=0/3 expected=True: setting up ci for a monorepo, 7 packages on turborepo, e2e s
+  [PASS] rate=0/3 expected=False: update the description in our internal code-review skill, it
+  [PASS] rate=0/3 expected=False: the pptx skill blew up on slide 12 of this deck with some re
+  [PASS] rate=0/3 expected=False: i installed a skill from some random repo last week and now 
+
+Max iterations reached (5).
+
+Exit reason: max_iterations (5)
+Best score: 5/8 (iteration 4)
+
+Report: /tmp/loop/report.html
+Results saved to: /tmp/loop/results/2026-08-25_100912
+DONE rc=0

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>advanced-skill-finder — Skill Description Optimization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', Georgia, serif;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background: #faf9f5;
+            color: #141413;
+        }
+        h1 { font-family: 'Poppins', sans-serif; color: #141413; }
+        .explainer {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+            color: #b0aea5;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .summary {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+        }
+        .summary p { margin: 5px 0; }
+        .best { color: #788c5d; font-weight: bold; }
+        .table-container {
+            overflow-x: auto;
+            width: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            background: white;
+            border: 1px solid #e8e6dc;
+            border-radius: 6px;
+            font-size: 12px;
+            min-width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #e8e6dc;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        th {
+            font-family: 'Poppins', sans-serif;
+            background: #141413;
+            color: #faf9f5;
+            font-weight: 500;
+        }
+        th.test-col {
+            background: #6a9bcc;
+        }
+        th.query-col { min-width: 200px; }
+        td.description {
+            font-family: monospace;
+            font-size: 11px;
+            word-wrap: break-word;
+            max-width: 400px;
+        }
+        td.result {
+            text-align: center;
+            font-size: 16px;
+            min-width: 40px;
+        }
+        td.test-result {
+            background: #f0f6fc;
+        }
+        .pass { color: #788c5d; }
+        .fail { color: #c44; }
+        .rate {
+            font-size: 9px;
+            color: #b0aea5;
+            display: block;
+        }
+        tr:hover { background: #faf9f5; }
+        .score {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .score-good { background: #eef2e8; color: #788c5d; }
+        .score-ok { background: #fef3c7; color: #d97706; }
+        .score-bad { background: #fceaea; color: #c44; }
+        .train-label { color: #b0aea5; font-size: 10px; }
+        .test-label { color: #6a9bcc; font-size: 10px; font-weight: bold; }
+        .best-row { background: #f5f8f2; }
+        th.positive-col { border-bottom: 3px solid #788c5d; }
+        th.negative-col { border-bottom: 3px solid #c44; }
+        th.test-col.positive-col { border-bottom: 3px solid #788c5d; }
+        th.test-col.negative-col { border-bottom: 3px solid #c44; }
+        .legend { font-family: 'Poppins', sans-serif; display: flex; gap: 20px; margin-bottom: 10px; font-size: 13px; align-items: center; }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-swatch { width: 16px; height: 16px; border-radius: 3px; display: inline-block; }
+        .swatch-positive { background: #141413; border-bottom: 3px solid #788c5d; }
+        .swatch-negative { background: #141413; border-bottom: 3px solid #c44; }
+        .swatch-test { background: #6a9bcc; }
+        .swatch-train { background: #141413; }
+    </style>
+</head>
+<body>
+    <h1>advanced-skill-finder — Skill Description Optimization</h1>
+    <div class="explainer">
+        <strong>Optimizing your skill's description.</strong> This page updates automatically as Claude tests different versions of your skill's description. Each row is an iteration — a new description attempt. The columns show test queries: green checkmarks mean the skill triggered correctly (or correctly didn't trigger), red crosses mean it got it wrong. The "Train" score shows performance on queries used to improve the description; the "Test" score shows performance on held-out queries the optimizer hasn't seen. When it's done, Claude will apply the best-performing description to your skill.
+    </div>
+
+    <div class="summary">
+        <p><strong>Original:</strong> Discover agent skills from the open ecosystem and load them either permanently or for a single session. Use when the user says &quot;find a skill for X&quot;, asks &quot;is there a skill that can...&quot;, names a skill or repository to try, or wants to extend agent capabilities. Also use before starting specialized or complex work — framework-specific implementation, deployment, testing strategy, document or data tooling — when no already-installed skill covers it. Check the available-skills list first, and search the ecosystem only if nothing there fits. Always offers a choice between installing and one-off loading before touching anything.</p>
+        <p class="best"><strong>Best:</strong> Use this whenever the user is about to do serious, unfamiliar, or high-stakes work and would rather follow a proven external playbook than your improvisation — threat modeling and security review, testing strategy, big migrations and upgrades, infra/IaC and PR review, deployment, new frameworks, SDKs, APIs, or file formats. The strongest cues are situational, not the word &quot;skill&quot;: &quot;I&#x27;ve never done this at this scale&quot;, &quot;I don&#x27;t trust my instincts&quot;, &quot;has someone written this down&quot;, &quot;find something battle-tested / proven / repeatable&quot;, &quot;set it up so it&#x27;s there next time&quot;, &quot;what tooling are you missing for our stack — go get it&quot;. Also use when they name a repo, author, or skill and want it found, judged, or vetted as safe to install. Search the open agent-skills ecosystem, check the source&#x27;s reputation, then offer install-permanently versus load-just-once and let them pick. Not for authoring, listing, or deleting their own skills, or for following their team&#x27;s internal docs.</p>
+        <p><strong>Best Score:</strong> 5/8 (test)</p>
+        <p><strong>Iterations:</strong> 5 | <strong>Train:</strong> 12 | <strong>Test:</strong> 8</p>
+    </div>
+
+    <div class="legend">
+        <span style="font-weight:600">Query columns:</span>
+        <span class="legend-item"><span class="legend-swatch swatch-positive"></span> Should trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-negative"></span> Should NOT trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-train"></span> Train</span>
+        <span class="legend-item"><span class="legend-swatch swatch-test"></span> Test</span>
+    </div>
+
+    <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Iter</th>
+                <th>Train</th>
+                <th>Test</th>
+                <th class="query-col">Description</th>
+                <th class="positive-col">i have to write a threat model for our payments api before the soc2 audit. i&#x27;ve read the owasp material but i want a repeatable process, not a wiki page. see if someone has published one</th>
+                <th class="positive-col">qa is two people and 4000 manual cases in a google sheet. i want to build a real testing strategy out of that but i don&#x27;t trust my instincts here — find something proven and tell me whether to install it for good or just use it this once</th>
+                <th class="positive-col">found a repo called addyosmani/agent-skills — is the stuff in it any good? i mostly care about the frontend performance ones and whether it&#x27;s safe to install</th>
+                <th class="positive-col">honestly, what are you missing to be actually useful on our kubernetes stuff? 3 clusters, argocd, and i re-explain the same context every session. go get whatever tooling would fix that</th>
+                <th class="positive-col">we&#x27;re moving a 60k-line django monolith to postgres 16 next month and i&#x27;ve never done a migration this size. i&#x27;d rather follow someone&#x27;s battle-tested checklist than my own guesses — find one and set it up so it&#x27;s there next time too</th>
+                <th class="positive-col">i just took over infra at a 12-person fintech and it&#x27;s all terraform but nobody left a runbook. i need to get to where i can review infra PRs safely and catch the stuff that takes prod down. is there something published that encodes how to do this properly or am i inventing it from scratch</th>
+                <th class="negative-col">write me a skill from scratch that enforces our commit convention — conventional commits plus a jira ticket id in the footer</th>
+                <th class="negative-col">remove the xlsx skill, i never use it and it keeps triggering on plain csv files</th>
+                <th class="negative-col">what skills do i have enabled right now? i lost track after installing a bunch last week</th>
+                <th class="negative-col">what&#x27;s the actual difference between a skill and a plugin in claude code? i keep mixing them up</th>
+                <th class="negative-col">add terraform to this project&#x27;s ci — write the github actions workflow, we already know how we want it structured</th>
+                <th class="negative-col">our team wiki has a page on how we run postmortems — follow that process for yesterday&#x27;s incident</th>
+                <th class="test-col positive-col">we&#x27;re picking between prisma and drizzle for a new service and i keep going in circles. is there a playbook that walks through this kind of decision properly instead of me reading 40 blog posts</th>
+                <th class="test-col positive-col">check out supabase/agent-skills for me — saw it mentioned in a thread and want to know if there&#x27;s anything in there worth adding before i start our auth rewrite</th>
+                <th class="test-col positive-col">boss wants a design system audit of our react app by friday, 200+ components in packages/ui, and i honestly don&#x27;t know what a proper audit even covers. anything out there i can lean on?</th>
+                <th class="test-col negative-col">our org has a deploy plugin in the internal catalog — check whether it&#x27;s enabled for me</th>
+                <th class="test-col negative-col">update the description in our internal code-review skill, it triggers on way too much and it&#x27;s getting annoying</th>
+                <th class="test-col positive-col">setting up ci for a monorepo, 7 packages on turborepo, e2e suite fails maybe 1 in 5 runs. before i start hacking at the actions yaml is there an established approach i should be following</th>
+                <th class="test-col negative-col">the pptx skill blew up on slide 12 of this deck with some relationship error, figure out what&#x27;s wrong with the file</th>
+                <th class="test-col negative-col">i installed a skill from some random repo last week and now i&#x27;m nervous. read through it and tell me if it does anything sketchy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="">
+                <td>1</td>
+                <td><span class="score score-ok">20/36</span></td>
+                <td><span class="score score-ok">12/24</span></td>
+                <td class="description">Discover agent skills from the open ecosystem and load them either permanently or for a single session. Use when the user says &quot;find a skill for X&quot;, asks &quot;is there a skill that can...&quot;, names a skill or repository to try, or wants to extend agent capabilities. Also use before starting specialized or complex work — framework-specific implementation, deployment, testing strategy, document or data tooling — when no already-installed skill covers it. Check the available-skills list first, and search the ecosystem only if nothing there fits. Always offers a choice between installing and one-off loading before touching anything.</td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="">
+                <td>2</td>
+                <td><span class="score score-ok">23/36</span></td>
+                <td><span class="score score-ok">14/24</span></td>
+                <td class="description">Reach for this when the user would rather follow an established, published playbook than your improvised judgment — signals like &quot;find something proven&quot;, &quot;has someone written this down&quot;, &quot;battle-tested&quot;, &quot;I don&#x27;t trust my instincts&quot;, or &quot;go get whatever tooling you&#x27;re missing&quot;. Typical shape: serious specialized work about to begin (threat modeling and security process, testing strategy, large migrations, infra and IaC review, deployment, framework or data tooling) where guessing is expensive and a known process exists somewhere. Also use when the user names a skill, repo, or author and wants it found, judged, or vetted as safe. Search the open agent-skills ecosystem, check the source&#x27;s reputation, then offer install-permanently versus load-just-once and let the user choose. Skip when an already-installed skill covers the need, or when the user is authoring, listing, or removing their own skills.</td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result pass">✓<span class="rate">2/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="">
+                <td>3</td>
+                <td><span class="score score-ok">21/36</span></td>
+                <td><span class="score score-ok">12/24</span></td>
+                <td class="description">Use this to fetch someone else&#x27;s published playbook — a community agent skill — instead of improvising from your own judgment. Trigger even when the user never says the word &quot;skill&quot;: they&#x27;re about to start high-stakes specialized work (threat modeling and security process, testing strategy, large migrations or upgrades, infra/IaC audits, deployment, unfamiliar frameworks, APIs, or file formats) and they want something proven, battle-tested, repeatable, or already written down by someone who has done it — or they say they don&#x27;t trust their own instincts here. Also trigger when they name a repo, author, or skill and want it found, evaluated, or vetted as safe to install, or when they ask what capabilities/tooling you&#x27;re missing for their stack and tell you to go get it. Search the open ecosystem, check the source&#x27;s reputation, then offer install-permanently versus load-just-once. Not for creating, listing, editing, or removing the user&#x27;s own skills, or for following their team&#x27;s own internal docs.</td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="best-row">
+                <td>4</td>
+                <td><span class="score score-ok">21/36</span></td>
+                <td><span class="score score-ok">14/24</span></td>
+                <td class="description">Use this whenever the user is about to do serious, unfamiliar, or high-stakes work and would rather follow a proven external playbook than your improvisation — threat modeling and security review, testing strategy, big migrations and upgrades, infra/IaC and PR review, deployment, new frameworks, SDKs, APIs, or file formats. The strongest cues are situational, not the word &quot;skill&quot;: &quot;I&#x27;ve never done this at this scale&quot;, &quot;I don&#x27;t trust my instincts&quot;, &quot;has someone written this down&quot;, &quot;find something battle-tested / proven / repeatable&quot;, &quot;set it up so it&#x27;s there next time&quot;, &quot;what tooling are you missing for our stack — go get it&quot;. Also use when they name a repo, author, or skill and want it found, judged, or vetted as safe to install. Search the open agent-skills ecosystem, check the source&#x27;s reputation, then offer install-permanently versus load-just-once and let them pick. Not for authoring, listing, or deleting their own skills, or for following their team&#x27;s internal docs.</td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">2/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="">
+                <td>5</td>
+                <td><span class="score score-ok">22/36</span></td>
+                <td><span class="score score-ok">13/24</span></td>
+                <td class="description">Stop and use this before improvising a process out of your own judgment. Trigger whenever the user wants a methodology, checklist, runbook, or review process for consequential work — threat modeling and security review, test strategy, large migrations and upgrades, Terraform/Kubernetes and infra PR review, deploys, unfamiliar frameworks, APIs, or file formats — and would rather follow something published and battle-tested than your guesses. The tells are situational, not the word &quot;skill&quot;: stakes or scale they&#x27;ve never handled, distrust of their own instincts, wanting it there again next session, or asking what tooling you&#x27;re missing for their stack. Also use to find, evaluate, or safety-vet a named repo, author, or skill. Search the open agent-skills ecosystem, weigh the source&#x27;s reputation, then offer install-permanently versus load-just-once. Not for authoring, listing, or deleting their own skills, or following their team&#x27;s internal docs.</td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+</body>
+</html>

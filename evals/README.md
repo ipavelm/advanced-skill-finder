@@ -77,3 +77,44 @@ a flat zero when nothing is wrong with the skill:
 4. **Its `ProcessPoolExecutor` driver returns False for everything** in a
    sandbox. Call `run_single_query` sequentially instead; a 3-5 second call is
    normal, since detection exits on the first tool use.
+
+## Description optimisation loop, 2026-08-25
+
+Ran the documented `skill-creator` loop (`scripts.run_loop`) against a
+20-case eval set rewritten to the documented style: 10 positive cases
+written as multi-step work with backstory, 10 negative near-misses.
+Average query length 152 characters. Split 12 train / 8 held-out test,
+3 runs per query, model `claude-opus-5`, 5 iterations.
+
+| iteration | train | test (held-out) | description length |
+| --------- | ----- | --------------- | ------------------ |
+| 1 (published) | 6/12 | 4/8 | 630 |
+| 2 | 7/12 | 4/8 | 909 |
+| 3 | 6/12 | 4/8 | 1010 |
+| 4 (loop's pick) | 6/12 | 5/8 | 985 |
+| 5 | 6/12 | 4/8 | 955 |
+
+Raw output, log and HTML report are in `loop-2026-08-25/`.
+
+**Outcome: the published description was kept.** The loop's selected
+candidate beat it by a single held-out query (5/8 vs 4/8) while scoring
+no better on train (6/12 for both), which is inside the noise of an
+eight-case holdout. Five rewrites moved recall between 0% and 28% with
+no trend, so the wording of the description is not what limits recall.
+The candidate also dropped the "check the available-skills list first"
+instruction and the explicit "find a skill for X" phrasing.
+
+What did hold across all five iterations: **precision 100%** — 150
+negative runs, zero false triggers. None of the ten near-miss cases
+(listing installed skills, removing a skill, authoring a new skill,
+following the team's own runbook, fixing an installed skill that
+crashed) ever fired the skill.
+
+Recall on the proactive path stays low, consistent with the
+`skill-creator` guidance that Claude consults a skill only for work it
+cannot readily do itself, and with Claude Code shipping a built-in
+skill-search tool that covers the same intent. Explicit requests and
+direct invocation are unaffected.
+
+These are measurements from one 20-case set on one model. Recorded, not
+concluded.

@@ -1,14 +1,82 @@
 [
-  {"query": "find me a skill for working with Terraform", "should_trigger": true},
-  {"query": "is there a skill that can review SQL migrations?", "should_trigger": true},
-  {"query": "take a look at supabase/agent-skills and tell me what is in there", "should_trigger": true},
-  {"query": "what are you missing to help me better with frontend work? get yourself some tooling", "should_trigger": true},
-  {"query": "I need to set up canary deployments on Kubernetes with automatic rollback", "should_trigger": true},
-  {"query": "put together a testing strategy for a legacy Django monolith", "should_trigger": true},
-  {"query": "this test is failing on the assert, fix it", "should_trigger": false},
-  {"query": "rename the variable userId to accountId across all files", "should_trigger": false},
-  {"query": "what does the UserPromptSubmit hook do in Claude Code?", "should_trigger": false},
-  {"query": "create a brand new skill from scratch for reviewing pull requests", "should_trigger": false},
-  {"query": "explain how git rebase differs from git merge", "should_trigger": false},
-  {"query": "what is 17 * 23", "should_trigger": false}
+  {
+    "query": "i just took over infra at a 12-person fintech and it's all terraform but nobody left a runbook. i need to get to where i can review infra PRs safely and catch the stuff that takes prod down. is there something published that encodes how to do this properly or am i inventing it from scratch",
+    "should_trigger": true
+  },
+  {
+    "query": "we're moving a 60k-line django monolith to postgres 16 next month and i've never done a migration this size. i'd rather follow someone's battle-tested checklist than my own guesses — find one and set it up so it's there next time too",
+    "should_trigger": true
+  },
+  {
+    "query": "boss wants a design system audit of our react app by friday, 200+ components in packages/ui, and i honestly don't know what a proper audit even covers. anything out there i can lean on?",
+    "should_trigger": true
+  },
+  {
+    "query": "check out supabase/agent-skills for me — saw it mentioned in a thread and want to know if there's anything in there worth adding before i start our auth rewrite",
+    "should_trigger": true
+  },
+  {
+    "query": "honestly, what are you missing to be actually useful on our kubernetes stuff? 3 clusters, argocd, and i re-explain the same context every session. go get whatever tooling would fix that",
+    "should_trigger": true
+  },
+  {
+    "query": "i have to write a threat model for our payments api before the soc2 audit. i've read the owasp material but i want a repeatable process, not a wiki page. see if someone has published one",
+    "should_trigger": true
+  },
+  {
+    "query": "qa is two people and 4000 manual cases in a google sheet. i want to build a real testing strategy out of that but i don't trust my instincts here — find something proven and tell me whether to install it for good or just use it this once",
+    "should_trigger": true
+  },
+  {
+    "query": "we're picking between prisma and drizzle for a new service and i keep going in circles. is there a playbook that walks through this kind of decision properly instead of me reading 40 blog posts",
+    "should_trigger": true
+  },
+  {
+    "query": "setting up ci for a monorepo, 7 packages on turborepo, e2e suite fails maybe 1 in 5 runs. before i start hacking at the actions yaml is there an established approach i should be following",
+    "should_trigger": true
+  },
+  {
+    "query": "found a repo called addyosmani/agent-skills — is the stuff in it any good? i mostly care about the frontend performance ones and whether it's safe to install",
+    "should_trigger": true
+  },
+  {
+    "query": "what skills do i have enabled right now? i lost track after installing a bunch last week",
+    "should_trigger": false
+  },
+  {
+    "query": "write me a skill from scratch that enforces our commit convention — conventional commits plus a jira ticket id in the footer",
+    "should_trigger": false
+  },
+  {
+    "query": "the pptx skill blew up on slide 12 of this deck with some relationship error, figure out what's wrong with the file",
+    "should_trigger": false
+  },
+  {
+    "query": "our org has a deploy plugin in the internal catalog — check whether it's enabled for me",
+    "should_trigger": false
+  },
+  {
+    "query": "i installed a skill from some random repo last week and now i'm nervous. read through it and tell me if it does anything sketchy",
+    "should_trigger": false
+  },
+  {
+    "query": "update the description in our internal code-review skill, it triggers on way too much and it's getting annoying",
+    "should_trigger": false
+  },
+  {
+    "query": "add terraform to this project's ci — write the github actions workflow, we already know how we want it structured",
+    "should_trigger": false
+  },
+  {
+    "query": "what's the actual difference between a skill and a plugin in claude code? i keep mixing them up",
+    "should_trigger": false
+  },
+  {
+    "query": "remove the xlsx skill, i never use it and it keeps triggering on plain csv files",
+    "should_trigger": false
+  },
+  {
+    "query": "our team wiki has a page on how we run postmortems — follow that process for yesterday's incident",
+    "should_trigger": false
+  }
 ]
