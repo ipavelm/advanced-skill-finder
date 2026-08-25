@@ -1,0 +1,100 @@
+{
+  "label": "B: \u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c+\u044d\u043a\u0441\u043a\u043b\u044e\u0437\u0438\u0432\u043d\u043e\u0441\u0442\u044c",
+  "skill_name": "advanced-skill-finder",
+  "description": "REQUIRED to reach agent skills published outside the user's own account. The built-in skill and plugin search covers only what the user or their organisation already has; it cannot see the public ecosystem. When the user wants a capability that is not already installed, this is the only route to it, and calling the built-in search instead will come back empty.\n\nTrigger on: \"find a skill for X\", \"is there a skill that\u2026\", any request for a tool, playbook or capability for a topic, a named repository or owner to inspect, or a request to extend your own abilities. Trigger too before specialist work \u2014 infrastructure as code, deployment pipelines, container orchestration, database migrations, testing strategy, framework-specific implementation, document or data tooling \u2014 when nothing installed covers that domain.\n\nAlso vets install counts and source reputation, warns that third-party skills run with full agent permissions, and offers install-permanently versus load-once.",
+  "summary": {
+    "total": 12,
+    "passed": 6,
+    "failed": 6,
+    "pos_triggers": 3,
+    "pos_runs": 18,
+    "neg_triggers": 0,
+    "neg_runs": 18
+  },
+  "results": [
+    {
+      "query": "find me a skill for working with Terraform",
+      "should_trigger": true,
+      "triggers": 1,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "is there a skill that can review SQL migrations?",
+      "should_trigger": true,
+      "triggers": 1,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "take a look at supabase/agent-skills and tell me what is in there",
+      "should_trigger": true,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "what are you missing to help me better with frontend work? get yourself some tooling",
+      "should_trigger": true,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "I need to set up canary deployments on Kubernetes with automatic rollback",
+      "should_trigger": true,
+      "triggers": 0,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "put together a testing strategy for a legacy Django monolith",
+      "should_trigger": true,
+      "triggers": 1,
+      "runs": 3,
+      "pass": false
+    },
+    {
+      "query": "this test is failing on the assert, fix it",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "rename the variable userId to accountId across all files",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "what does the UserPromptSubmit hook do in Claude Code?",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "create a brand new skill from scratch for reviewing pull requests",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "explain how git rebase differs from git merge",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "what is 17 * 23",
+      "should_trigger": false,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    }
+  ]
+}
