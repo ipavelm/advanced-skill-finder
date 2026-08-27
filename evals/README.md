@@ -118,3 +118,45 @@ direct invocation are unaffected.
 
 These are measurements from one 20-case set on one model. Recorded, not
 concluded.
+
+## Repositioning A/B, 2026-08-27
+
+The five-iteration loop moved recall between 0% and 28% with no trend, which
+suggested the limit was not the wording but the position: Claude Code ships
+built-in skill search covering the same intent, and a description cannot
+outcompete a built-in tool for it. So this tested a deliberate repositioning
+rather than another rewrite — the skill as the step *after* a built-in search
+comes back empty, centred on the public ecosystem, vetting a source, and the
+install-versus-load-once choice, which the built-ins do not cover.
+
+Both descriptions, same 20-case set, 3 runs per query, `claude-opus-5`:
+
+| Description | Recall | False triggers | Precision |
+| ----------- | ------ | -------------- | --------- |
+| current (630 chars) | 0/30 | 0/30 | 100% |
+| repositioned (669 chars) | 1/30 | 0/30 | 100% |
+
+**Not adopted.** One trigger out of thirty is noise. Counting the loop's five
+iterations, seven distinct descriptions have now been measured against this
+eval set and every one lands at or near zero recall while holding perfect
+precision. The repositioning hypothesis is disconfirmed along with the wording
+hypothesis: on multi-step queries written the way the `skill-creator`
+documentation prescribes, this skill does not auto-trigger, and no description
+tested changes that.
+
+What this means in practice, stated plainly because a user deserves to know it:
+the skill earns its keep on explicit invocation — the user asking for it, or
+`/advanced-skill-finder` — not on proactive triggering. The behavioural
+benchmark (`BENCHMARK.md`) measures what it does once invoked, and that is
+where the measurable value sits: the same answer for ~19% fewer tokens and
+roughly half the wall-clock, and an install-consent default the baseline does
+not have.
+
+Two things worth ruling out before anyone retries this: the eval set is one
+20-case set on one model, and every measurement here holds precision at 100%,
+so the harness is discriminating something. A description that finally moved
+recall would have to be checked for false triggers, since the near-misses in
+this set — listing installed skills, removing one, authoring one, following the
+team's own runbook — are exactly what an over-eager description would catch.
+
+Raw runs in `ab-2026-08-27/`.
